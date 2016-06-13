@@ -53,7 +53,7 @@ const pathUserWorkspaces = 'userWorkspaces';
 // fbAddTask(1, newTask);
 // fbUpdateTask(1, '-KJH5GUa9XP5Iya48HVU', newTask);
 // fbRemoveTask(1, '-KJH5GUa9XP5Iya48HVU');
-// searchTasks(queryParamsTasks);
+searchTasks(queryParamsTasks);
 
 // elSyncTaskTags(pathTaskTags);
 // fbAddTaskTags(1, '-KJHBYonLsS8elSl99Qh', ['best', 'faster']);
@@ -71,7 +71,7 @@ const pathUserWorkspaces = 'userWorkspaces';
 
 // elSyncUsers(pathUser);
 // fbAddUser(newUser);
-searchUsers(queryParamsUsers);
+// searchUsers(queryParamsUsers);
 
 // elSyncUserWorkspaces(pathUserWorkspaces);
 // fbAddUserWorkspaces('-KJHMPsqEZqM_y8EBzKo', ['1', '2']);
