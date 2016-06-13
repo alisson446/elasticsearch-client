@@ -10,21 +10,25 @@ exports.elSyncTasks = function(path) {
 
   fbSyncTasks(path,
     (snap) => {
-      console.log('create', workspaceId, snap.key, snap.val());
+      const payloadVal = snap.val();
+      payloadVal.workspaceId = workspaceId;
+
+      console.log('create', workspaceId, snap.key, payloadVal);
       firebaseQueueRef.push({
         action: 'add',
         type: 'ADD_TASK',
-        workspaceId: workspaceId,
         taskId: snap.key,
-        payload: snap.val()
+        payload: payloadVal
       });
     },
     (snap) => {
+      const payloadVal = snap.val();
+      payloadVal.workspaceId = workspaceId;
+
       console.log('update', workspaceId, snap.key, snap.val());
       firebaseQueueRef.push({
         action: 'update',
         type: 'CHANGE_TASK',
-        workspaceId: workspaceId,
         taskId: snap.key,
         payload: snap.val()
       });
@@ -34,7 +38,6 @@ exports.elSyncTasks = function(path) {
       firebaseQueueRef.push({
         action: 'remove',
         type: 'REMOVE_TASK',
-        workspaceId: workspaceId,
         taskId: snap.key
       });
     }

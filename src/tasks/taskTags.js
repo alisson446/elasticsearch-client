@@ -5,9 +5,6 @@ const fbUnsyncTaskTags = require('./../firebase/tasks/taskTags').fbUnsyncTaskTag
 const firebaseQueueRef = firebase.database().ref('_indexTasks/tasks');
 
 exports.elSyncTaskTags = function(path) {
-  const arrPath = path.split('/');
-  const workspaceId = arrPath[1];
-
   fbSyncTaskTags(path,
     (snap) => {
       var arrTaskTags = [];
@@ -18,7 +15,6 @@ exports.elSyncTaskTags = function(path) {
       firebaseQueueRef.push({
         action: 'update',
         type: 'ADD_TASK_TAG',
-        workspaceId: workspaceId,
         taskId: snap.key,
         payload: { 
           tags: arrTaskTags 
@@ -29,7 +25,6 @@ exports.elSyncTaskTags = function(path) {
       firebaseQueueRef.push({
         action: 'update',
         type: 'REMOVE_TASK_TAG',
-        workspaceId: workspaceId,
         taskId: snap.key,
         payload: { tags: snap.val() }
       });
