@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "elasticsearch": "^11.0.1",
     "firebase": "^3.0.3",
     "firebase-queue": "^1.4.0"
   }

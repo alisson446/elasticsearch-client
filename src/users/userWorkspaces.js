@@ -15,9 +15,9 @@ exports.elSyncUserWorkspaces = function(path) {
       firebaseQueueRef.push({
         action: 'update',
         type: 'ADD_TASK_USER_WORKSPACE',
-        userId: snap.key,
         payload: { 
-          workspaces: arrUserWorkspaces 
+          workspaces: arrUserWorkspaces,
+          userId: snap.key
         }
       });
     },
@@ -25,8 +25,10 @@ exports.elSyncUserWorkspaces = function(path) {
       firebaseQueueRef.push({
         action: 'update',
         type: 'REMOVE_USER_WORKSPACE',
-        userId: snap.key,
-        payload: { workspaces: snap.val() }
+        payload: { 
+          workspaces: snap.val(), 
+          userId: snap.key
+        }
       });
     }
   );

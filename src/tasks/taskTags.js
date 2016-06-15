@@ -15,9 +15,9 @@ exports.elSyncTaskTags = function(path) {
       firebaseQueueRef.push({
         action: 'update',
         type: 'ADD_TASK_TAG',
-        taskId: snap.key,
         payload: { 
-          tags: arrTaskTags 
+          tags: arrTaskTags,
+          taskId: snap.key
         }
       });
     },
@@ -25,8 +25,10 @@ exports.elSyncTaskTags = function(path) {
       firebaseQueueRef.push({
         action: 'update',
         type: 'REMOVE_TASK_TAG',
-        taskId: snap.key,
-        payload: { tags: snap.val() }
+        payload: { 
+          tags: snap.val(),
+          taskId: snap.key
+        }
       });
     }
   );

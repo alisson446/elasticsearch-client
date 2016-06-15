@@ -7,21 +7,25 @@ const firebaseQueueRef = firebase.database().ref('_indexUsers/tasks');
 exports.elSyncUsers = function(path) {  
   fbSyncUsers(path,
     (snap) => {
+      const payloadVal = snap.val();
+      payloadVal.userId = snap.key;
+
       console.log('create', snap.key, snap.val());
       firebaseQueueRef.push({
         action: 'add',
         type: 'ADD_USER',
-        userId: snap.key,
-        payload: snap.val()
+        payload: payloadVal
       });
     },
     (snap) => {
+      const payloadVal = snap.val();
+      payloadVal.userId = snap.key;
+
       console.log('update', snap.key, snap.val());
       firebaseQueueRef.push({
         action: 'update',
         type: 'CHANGE_USER',
-        userId: snap.key,
-        payload: snap.val()
+        payload: payloadVal
       });
     },
     (snap) => {
@@ -29,7 +33,9 @@ exports.elSyncUsers = function(path) {
       firebaseQueueRef.push({
         action: 'remove',
         type: 'REMOVE_USER',
-        userId: snap.key
+        payload: {
+          userId: snap.key
+        }
       });
     }
   );
