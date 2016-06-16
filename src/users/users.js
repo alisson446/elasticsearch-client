@@ -12,7 +12,7 @@ exports.elSyncUsers = function(path) {
 
       console.log('create', snap.key, snap.val());
       firebaseQueueRef.push({
-        action: 'add',
+        action: 'create',
         type: 'ADD_USER',
         payload: payloadVal
       });

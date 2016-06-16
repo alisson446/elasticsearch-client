@@ -16,7 +16,7 @@ exports.elSyncTasks = function(path) {
 
       console.log('create', workspaceId, snap.key, payloadVal);
       firebaseQueueRef.push({
-        action: 'add',
+        action: 'create',
         type: 'ADD_TASK',
         payload: payloadVal
       });

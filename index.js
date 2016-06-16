@@ -17,6 +17,7 @@ const searchUsers = require('./src/firebase/users/queryUsers').searchUsers;
 const elSyncUserWorkspaces = require('./src/users/userWorkspaces').elSyncUserWorkspaces;
 const fbAddUserWorkspaces = require('./src/firebase/users/userWorkspaces').fbAddUserWorkspaces;
 const fbRemoveUserWorkspace = require('./src/firebase/users/userWorkspaces').fbRemoveUserWorkspace;
+const addWorkspace = require('./src/users/workspace').addWorkspace;
 
 const newTask = {
   title: 'firstTask',
@@ -56,20 +57,12 @@ const pathUserWorkspaces = 'userWorkspaces';
 // elSyncTaskTags(pathTaskTags);
 // fbAddTaskTags(1, '-KJHBYonLsS8elSl99Qh', ['best', 'faster']);
 
-// elSyncTaskTeams(pathTaskTeams);
-// fbAddTaskTeam(1, '-KHaSKv7S6Dvxp2ekTnK', ['teamId1', 'teamId2']);
-
-// elSyncTaskFollowers(pathTaskFollowers);
-// fbAddTaskFollowers(1, '-KHaSKv7S6Dvxp2ekTnK', ['user1', 'user2']);
-
-// elSyncTaskAssignees(pathTaskAssignees);
-// fbAddTaskAssignees(1, '-KHaSGn355JoZ31FU9km', ['123', '321']);
-
 // -------------------- users --------------------
 
 // elSyncUsers(pathUser);
 // fbAddUser(newUser);
-searchUsers(queryParamsUsers);
+// searchUsers(queryParamsUsers);
 
 // elSyncUserWorkspaces(pathUserWorkspaces);
 // fbAddUserWorkspaces('-KJHMPsqEZqM_y8EBzKo', ['1', '2']);
+addWorkspace('-KJHMPsqEZqM_y8EBzKo', 1);
