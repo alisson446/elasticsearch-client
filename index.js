@@ -25,10 +25,10 @@ const addWorkspace = require('./src/users/workspace').addWorkspace;
 const removeWorkspace = require('./src/users/workspace').removeWorkspace;
 
 const newTask = {
+  path: '1_1.2_1.2.3',
   title: 'firstTask',
   dueDate: Date.now(),
-  startDate: Date.now(),
-  path: ''
+  startDate: Date.now()
 };
 
 const newUser = {
@@ -37,7 +37,8 @@ const newUser = {
 };
 
 const queryParamsTasks = {
-  path: 'something'
+  path: '1_1.2',
+  title: 'firsttask'
 };
 
 const queryParamsUsers = {
@@ -58,7 +59,7 @@ const pathUserWorkspaces = 'userWorkspaces';
 // fbAddTask(1, newTask);
 // fbUpdateTask(1, '-KJH5GUa9XP5Iya48HVU', newTask);
 // fbRemoveTask(1, '-KJH5GUa9XP5Iya48HVU');
-// searchTasks(queryParamsTasks);
+searchTasks(queryParamsTasks);
 
 // elSyncTaskTags(pathTaskTags);
 // fbAddTaskTags(1, '-KJHBYonLsS8elSl99Qh', ['best', 'faster']);
