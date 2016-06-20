@@ -12,3 +12,14 @@ exports.addWorkspace = function(userId, workspaceId) {
     }
   });
 };
+
+exports.removeWorkspace = function(userId, workspaceId) {
+  firebaseQueueRef.push({
+    action: 'remove_workspace',
+    type: 'REMOVE_TASK_USER_WORKSPACE',
+    payload: {
+      userId: userId,
+      workspaceId: workspaceId,
+    }
+  });
+};

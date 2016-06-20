@@ -7,6 +7,10 @@ const searchTasks = require('./src/firebase/tasks/queryTasks').searchTasks;
 const elSyncTaskTags = require('./src/tasks/taskTags').elSyncTaskTags;
 const fbAddTaskTags = require('./src/firebase/tasks/taskTags').fbAddTaskTags;
 const fbRemoveTaskTag = require('./src/firebase/tasks/taskTags').fbRemoveTaskTag;
+const addTag = require('./src/tasks/tags').addTag;
+const removeTag = require('./src/tasks/tags').removeTag;
+const addTeam = require('./src/tasks/teams').addTeam;
+const removeTeam = require('./src/tasks/teams').removeTeam;
 
 const elSyncUsers = require('./src/users/users').elSyncUsers;
 const fbAddUser = require('./src/firebase/users/users').fbAddUser;
@@ -18,11 +22,13 @@ const elSyncUserWorkspaces = require('./src/users/userWorkspaces').elSyncUserWor
 const fbAddUserWorkspaces = require('./src/firebase/users/userWorkspaces').fbAddUserWorkspaces;
 const fbRemoveUserWorkspace = require('./src/firebase/users/userWorkspaces').fbRemoveUserWorkspace;
 const addWorkspace = require('./src/users/workspace').addWorkspace;
+const removeWorkspace = require('./src/users/workspace').removeWorkspace;
 
 const newTask = {
   title: 'firstTask',
   dueDate: Date.now(),
-  startDate: Date.now()
+  startDate: Date.now(),
+  path: ''
 };
 
 const newUser = {
@@ -31,7 +37,7 @@ const newUser = {
 };
 
 const queryParamsTasks = {
-  title: 'Tas'
+  path: 'something'
 };
 
 const queryParamsUsers = {
@@ -56,6 +62,11 @@ const pathUserWorkspaces = 'userWorkspaces';
 
 // elSyncTaskTags(pathTaskTags);
 // fbAddTaskTags(1, '-KJHBYonLsS8elSl99Qh', ['best', 'faster']);
+// addTag('-KJHBYonLsS8elSl99Qh', '1');
+// removeTag('-KJHBYonLsS8elSl99Qh', '1');
+
+// addTeam('-KJHBYonLsS8elSl99Qh', '1');
+// removeTeam('-KJHBYonLsS8elSl99Qh', '1');
 
 // -------------------- users --------------------
 
@@ -65,4 +76,5 @@ const pathUserWorkspaces = 'userWorkspaces';
 
 // elSyncUserWorkspaces(pathUserWorkspaces);
 // fbAddUserWorkspaces('-KJHMPsqEZqM_y8EBzKo', ['1', '2']);
-addWorkspace('-KJHMPsqEZqM_y8EBzKo', 1);
+// addWorkspace('-KJHMPsqEZqM_y8EBzKo', '3');
+// removeWorkspace('-KJHMPsqEZqM_y8EBzKo', '3');
