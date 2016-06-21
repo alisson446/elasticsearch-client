@@ -32,13 +32,16 @@ const newTask = {
 };
 
 const newUser = {
-	displayName: 'newUser',
+	displayName: 'user',
 	email: 'newUser@user.com'
 };
 
 const queryParamsTasks = {
+  workspaceId: '1',
+  scopeId: '123',
   path: '1_1.2',
-  title: 'firsttask'
+  title: 'firsttask',
+  tags: ['1', '2']
 };
 
 const queryParamsUsers = {
