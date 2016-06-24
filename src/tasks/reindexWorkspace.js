@@ -1,13 +1,11 @@
 const firebase = require('./../../lib/firebase');
 
-const firebaseQueueRef = firebase.database().ref('_reindexWorkspace/tasks');
+const firebaseQueueRef = firebase.database().ref('_reindexWorkspaceTasks/tasks');
 
-exports.reindexWorkspace = function(workspaceIds) {
-  const objWorkspaceIds = {};
-
-  workspaceIds.forEach(function (workspaceId) {
-    objWorkspaceIds[workspaceId] = true;
+exports.reindexWorkspaceTasks = function(workspaceId) {
+  firebaseQueueRef.push({ 
+  	payload: {
+  		workspaceId: workspaceId
+  	} 
   });
-
-  firebaseQueueRef.push(objWorkspaceIds);
 };

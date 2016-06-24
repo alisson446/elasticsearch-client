@@ -12,6 +12,9 @@ const removeTag = require('./src/tasks/tags').removeTag;
 const addTeam = require('./src/tasks/teams').addTeam;
 const removeTeam = require('./src/tasks/teams').removeTeam;
 
+const removeWorkspaceIndex = require('./src/tasks/removeWorkspaceIndex').removeWorkspaceIndex;
+const reindexWorkspaceTasks = require('./src/tasks/reindexWorkspace').reindexWorkspaceTasks;
+
 const elSyncUsers = require('./src/users/users').elSyncUsers;
 const fbAddUser = require('./src/firebase/users/users').fbAddUser;
 const fbUpdateUser = require('./src/firebase/users/users').fbUpdateUser;
@@ -49,7 +52,8 @@ const queryParamsUsers = {
   workspaceId: 1
 };
 
-const pathTask = 'tasks/1';
+const pathTask1 = 'tasks/1';
+const pathTask2 = 'tasks/2';
 const pathTaskTags = 'taskTags/1';
 const pathTaskTeams = 'taskTeams/1';
 const pathTaskFollowers = 'taskFollowers/1';
@@ -58,8 +62,9 @@ const pathTaskAssignees = 'taskAssignees/1';
 const pathUser = 'users';
 const pathUserWorkspaces = 'userWorkspaces';
 
-// elSyncTasks(pathTask);
-// fbAddTask(1, newTask);
+// elSyncTasks(pathTask1);
+// elSyncTasks(pathTask2);
+// fbAddTask(2, newTask);
 // fbUpdateTask(1, '-KJH5GUa9XP5Iya48HVU', newTask);
 // fbRemoveTask(1, '-KJH5GUa9XP5Iya48HVU');
 searchTasks(queryParamsTasks);
@@ -71,6 +76,9 @@ searchTasks(queryParamsTasks);
 
 // addTeam('-KJHBYonLsS8elSl99Qh', '1');
 // removeTeam('-KJHBYonLsS8elSl99Qh', '1');
+
+// removeWorkspaceIndex('1');
+// reindexWorkspaceTasks('1');
 
 // -------------------- users --------------------
 
