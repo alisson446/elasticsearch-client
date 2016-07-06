@@ -15,6 +15,8 @@ const removeTeam = require('./src/tasks/teams').removeTeam;
 const removeWorkspaceIndex = require('./src/tasks/removeWorkspaceIndex').removeWorkspaceIndex;
 const reindexWorkspaceTasks = require('./src/tasks/reindexWorkspace').reindexWorkspaceTasks;
 
+const moveTask = require('./src/tasks/move').moveTask;
+
 const elSyncUsers = require('./src/users/users').elSyncUsers;
 const fbAddUser = require('./src/firebase/users/users').fbAddUser;
 const fbUpdateUser = require('./src/firebase/users/users').fbUpdateUser;
@@ -43,8 +45,8 @@ const queryParamsTasks = {
   workspaceId: '1',
   scopeId: '123',
   path: '1_1.2',
-  title: 'firsttask',
-  tags: ['1', '2']
+  title: 'firsttas',
+  tags: ['best', 'faster']
 };
 
 const queryParamsUsers = {
@@ -79,6 +81,8 @@ searchTasks(queryParamsTasks);
 
 // removeWorkspaceIndex('1');
 // reindexWorkspaceTasks('1');
+
+// moveTask('1_1.2', '2_2.1');
 
 // -------------------- users --------------------
 
