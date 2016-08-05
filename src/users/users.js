@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('./../../lib/firebase');
 const fbSyncUsers = require('./../firebase/users/users').fbSyncUsers;
 const fbUnsyncUsers = require('./../firebase/users/users').fbUnsyncUsers;

@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('./../../../lib/firebase');
 
 const firebaseRef = firebase.database().ref();
@@ -27,10 +29,19 @@ exports.fbUnsyncTasks = function(path, addListener, changedListener, removedList
   }
 }
 
-exports.fbAddTask = function(workspaceId, payload) {
+exports.fbAddTask = function(workspaceId, payload, parentPath) {
   return new Promise((resolve, reject) => {
-    const taskId = firebaseRef.child('tasks/'+workspaceId).push().key;
+    let taskId;
+
+    if (workspaceId) {
+      taskId = firebaseRef.child('tasks/'+workspaceId).push().key;
+    } else {
+      workspaceId = firebaseRef.child('tasks').push().key;
+      taskId = workspaceId;
+    } 
+
     payload.id = taskId;
+    payload.path = parentPath ? `${parentPath}|${taskId}` : workspaceId;
     
     const bodyTask = payload;
     const path = 'tasks/'+workspaceId+'/'+taskId;

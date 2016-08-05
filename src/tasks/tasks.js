@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('./../../lib/firebase');
 const fbSyncTasks = require('./../firebase/tasks/tasks').fbSyncTasks;
 const fbUnsyncTasks = require('./../firebase/tasks/tasks').fbUnsyncTasks;

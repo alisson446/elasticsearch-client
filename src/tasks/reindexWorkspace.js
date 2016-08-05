@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('./../../lib/firebase');
 
 const firebaseQueueRef = firebase.database().ref('_reindexWorkspaceTasks/tasks');

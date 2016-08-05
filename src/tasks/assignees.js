@@ -4,26 +4,26 @@ const firebase = require('./../../lib/firebase');
 
 const firebaseQueueRef = firebase.database().ref('_indexTasks/tasks');
 
-exports.addTag = function(workspaceId, taskId, tagId) {
+exports.addAssignee = function(workspaceId, taskId, assigneeId) {
   firebaseQueueRef.push({
-    action: 'add_tag',
-    type: 'ADD_TASK_TAG',
+    action: 'add_assignee',
+    type: 'ADD_TASK_ASSIGNEE',
     payload: {
       workspaceId: workspaceId,
       taskId: taskId,
-      tagId: tagId,
+      assigneeId: assigneeId,
     }
   });
 };
 
-exports.removeTag = function(workspaceId, taskId, tagId) {
+exports.removeAssignee = function(workspaceId, taskId, assigneeId) {
   firebaseQueueRef.push({
-    action: 'remove_tag',
-    type: 'REMOVE_TASK_TAG',
+    action: 'remove_assignee',
+    type: 'REMOVE_TASK_ASSIGNEE',
     payload: {
       workspaceId: workspaceId,
       taskId: taskId,
-      tagId: tagId,
+      assigneeId: assigneeId,
     }
   });
 };

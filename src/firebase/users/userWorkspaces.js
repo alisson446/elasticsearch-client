@@ -1,3 +1,5 @@
+'use strict';
+
 const firebase = require('./../../../lib/firebase');
 
 const firebaseRef = firebase.database().ref();

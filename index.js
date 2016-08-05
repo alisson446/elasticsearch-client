@@ -1,3 +1,5 @@
+'use strict';
+
 const elSyncTasks = require('./src/tasks/tasks').elSyncTasks;
 const fbAddTask = require('./src/firebase/tasks/tasks').fbAddTask;
 const fbUpdateTask = require('./src/firebase/tasks/tasks').fbUpdateTask;
@@ -11,10 +13,17 @@ const addTag = require('./src/tasks/tags').addTag;
 const removeTag = require('./src/tasks/tags').removeTag;
 const addTeam = require('./src/tasks/teams').addTeam;
 const removeTeam = require('./src/tasks/teams').removeTeam;
+const addFollower = require('./src/tasks/followers').addFollower;
+const removeFollower = require('./src/tasks/followers').removeFollower;
+const addAssignee = require('./src/tasks/assignees').addAssignee;
+const removeAssignee = require('./src/tasks/assignees').removeAssignee;
+
+const setArchived = require('./src/tasks/setArchived').setArchived;
 
 const removeWorkspaceIndex = require('./src/tasks/removeWorkspaceIndex').removeWorkspaceIndex;
 const reindexWorkspaceTasks = require('./src/tasks/reindexWorkspace').reindexWorkspaceTasks;
 
+const fbMoveTasks = require('./src/firebase/tasks/fbMoveTasks').fbMoveTasks;
 const moveTask = require('./src/tasks/move').moveTask;
 
 const elSyncUsers = require('./src/users/users').elSyncUsers;
@@ -31,7 +40,7 @@ const removeWorkspace = require('./src/users/workspace').removeWorkspace;
 
 const newTask = {
   path: '1_1.2_1.2.3',
-  title: 'firstTask',
+  title: 'TéstTãsk',
   dueDate: Date.now(),
   startDate: Date.now()
 };
@@ -42,11 +51,10 @@ const newUser = {
 };
 
 const queryParamsTasks = {
-  workspaceId: '1',
-  scopeId: '123',
-  path: '1_1.2',
-  title: 'firsttas',
-  tags: ['best', 'faster']
+  workspaceId: '-KNPHQqnCBrigglz2esN',
+  scopeId: '-KNPHQqnCBrigglz2esN',
+  path: '-KNPHQqnCBrigglz2esN',
+  title: 'sk',
 };
 
 const queryParamsUsers = {
@@ -54,7 +62,7 @@ const queryParamsUsers = {
   workspaceId: 1
 };
 
-const pathTask1 = 'tasks/1';
+const pathTask1 = 'tasks/-KNPHQqnCBrigglz2esN';
 const pathTask2 = 'tasks/2';
 const pathTaskTags = 'taskTags/1';
 const pathTaskTeams = 'taskTeams/1';
@@ -66,23 +74,30 @@ const pathUserWorkspaces = 'userWorkspaces';
 
 // elSyncTasks(pathTask1);
 // elSyncTasks(pathTask2);
-// fbAddTask(2, newTask);
+// fbAddTask('-KNPHQqnCBrigglz2esN', newTask, '-KNPHQqnCBrigglz2esN');
 // fbUpdateTask(1, '-KJH5GUa9XP5Iya48HVU', newTask);
 // fbRemoveTask(1, '-KJH5GUa9XP5Iya48HVU');
 searchTasks(queryParamsTasks);
 
 // elSyncTaskTags(pathTaskTags);
-// fbAddTaskTags(1, '-KJHBYonLsS8elSl99Qh', ['best', 'faster']);
-// addTag('-KJHBYonLsS8elSl99Qh', '1');
-// removeTag('-KJHBYonLsS8elSl99Qh', '1');
+// fbAddTaskTags('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', ['-Tag1', '-Tag2']);
 
-// addTeam('-KJHBYonLsS8elSl99Qh', '1');
-// removeTeam('-KJHBYonLsS8elSl99Qh', '1');
+// addTag('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Tag1');
+// removeTag('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Tag1');
+// addTeam('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Team1');
+// removeTeam('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Team1');
+// addFollower('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Follower1');
+// removeFollower('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Follower1');
+// addAssignee('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Assignee1');
+// removeAssignee('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Assignee1');
 
 // removeWorkspaceIndex('1');
-// reindexWorkspaceTasks('1');
+// reindexWorkspaceTasks('-KNPHQqnCBrigglz2esN');
 
-// moveTask('1_1.2', '2_2.1');
+// setArchived('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-KNPHQqnCBrigglz2esN|-KNPI2ZwxcYWSjdJSMtC', true);
+
+// fbMoveTasks('-KNPHQqnCBrigglz2esN/-KNPI2ZwxcYWSjdJSMtC', '-KOBd1CjiLOH-gIa8laf', '-KOBd1CjiLOH-gIa8laf/-KOBdBShgKyMPaMHxJP2');
+// moveTask('-KOBd1CjiLOH-gIa8laf', '-KOBdBShgKyMPaMHxJP2', '-KNPHQqnCBrigglz2esN|-KNPI2ZwxcYWSjdJSMtC', '-KOBd1CjiLOH-gIa8laf|-KOBdBShgKyMPaMHxJP2');
 
 // -------------------- users --------------------
 
@@ -91,6 +106,6 @@ searchTasks(queryParamsTasks);
 // searchUsers(queryParamsUsers);
 
 // elSyncUserWorkspaces(pathUserWorkspaces);
-// fbAddUserWorkspaces('-KJHMPsqEZqM_y8EBzKo', ['1', '2']);
-// addWorkspace('-KJHMPsqEZqM_y8EBzKo', '3');
-// removeWorkspace('-KJHMPsqEZqM_y8EBzKo', '3');
+// fbAddUserWorkspaces('-KOHLNytNnbWf-ln9tdK', ['-Workspace1', '-Workspace2']);
+// addWorkspace('-KOHLNytNnbWf-ln9tdK', '-Workspace1');
+// removeWorkspace('-KOHLNytNnbWf-ln9tdK', '-Workspace2');
