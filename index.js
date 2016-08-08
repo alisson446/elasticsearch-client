@@ -40,7 +40,7 @@ const removeWorkspace = require('./src/users/workspace').removeWorkspace;
 
 const newTask = {
   path: '1_1.2_1.2.3',
-  title: 'TéstTãsk',
+  title: 'Versão em português',
   dueDate: Date.now(),
   startDate: Date.now()
 };
@@ -54,7 +54,7 @@ const queryParamsTasks = {
   workspaceId: '-KNPHQqnCBrigglz2esN',
   scopeId: '-KNPHQqnCBrigglz2esN',
   path: '-KNPHQqnCBrigglz2esN',
-  title: 'sk',
+  title: 'first',
 };
 
 const queryParamsUsers = {
