@@ -4,15 +4,22 @@ const firebase = require('./../../lib/firebase');
 
 const firebaseQueueRef = firebase.database().ref('_indexTasks/tasks');
 
-exports.setArchived = function(workspaceId, taskId, taskPath, isArchived) {
+exports.setArchived = function(taskPath) {
   firebaseQueueRef.push({
     action: 'set_archived',
     type: 'SET_TASK_ARCHIVED',
     payload: {
-    	workspaceId: workspaceId,
-    	taskId: taskId,
-      path: taskPath,
-      isArchived: isArchived,
+      path: taskPath
+    }
+  });
+};
+
+exports.setUnArchived = function(taskPath) {
+  firebaseQueueRef.push({
+    action: 'set_unarchived',
+    type: 'SET_TASK_UNARCHIVED',
+    payload: {
+      path: taskPath
     }
   });
 };

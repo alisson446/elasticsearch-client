@@ -27,3 +27,14 @@ exports.removeTeam = function(workspaceId, taskId, teamId) {
     }
   });
 };
+
+exports.removeTeamAll = function(workspaceId, teamId) {
+  firebaseQueueRef.push({
+    action: 'remove_team_all',
+    type: 'REMOVE_TASK_TEAM_ALL',
+    payload: {
+      workspaceId: workspaceId,
+      teamId: teamId,
+    }
+  });
+};

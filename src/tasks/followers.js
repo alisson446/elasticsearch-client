@@ -27,3 +27,14 @@ exports.removeFollower = function(workspaceId, taskId, followerId) {
     }
   });
 };
+
+exports.removeFollowerAll = function(workspaceId, followerId) {
+  firebaseQueueRef.push({
+    action: 'remove_follower_all',
+    type: 'REMOVE_TASK_FOLLOWER_ALL',
+    payload: {
+      workspaceId: workspaceId,
+      followerId: followerId,
+    }
+  });
+};

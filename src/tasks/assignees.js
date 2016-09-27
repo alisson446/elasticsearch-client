@@ -27,3 +27,14 @@ exports.removeAssignee = function(workspaceId, taskId, assigneeId) {
     }
   });
 };
+
+exports.removeAssigneeAll = function(workspaceId, assigneeId) {
+  firebaseQueueRef.push({
+    action: 'remove_assignee_all',
+    type: 'REMOVE_TASK_ASSIGNEE_ALL',
+    payload: {
+      workspaceId: workspaceId,
+      assigneeId: assigneeId,
+    }
+  });
+};

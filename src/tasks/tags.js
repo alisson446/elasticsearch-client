@@ -27,3 +27,14 @@ exports.removeTag = function(workspaceId, taskId, tagId) {
     }
   });
 };
+
+exports.removeTagAll = function(workspaceId, tagId) {
+  firebaseQueueRef.push({
+    action: 'remove_tag_all',
+    type: 'REMOVE_TASK_TAG_ALL',
+    payload: {
+      workspaceId: workspaceId,
+      tagId: tagId,
+    }
+  });
+};

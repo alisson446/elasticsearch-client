@@ -11,14 +11,19 @@ const fbAddTaskTags = require('./src/firebase/tasks/taskTags').fbAddTaskTags;
 const fbRemoveTaskTag = require('./src/firebase/tasks/taskTags').fbRemoveTaskTag;
 const addTag = require('./src/tasks/tags').addTag;
 const removeTag = require('./src/tasks/tags').removeTag;
+const removeTagAll = require('./src/tasks/tags').removeTagAll;
 const addTeam = require('./src/tasks/teams').addTeam;
 const removeTeam = require('./src/tasks/teams').removeTeam;
+const removeTeamAll = require('./src/tasks/teams').removeTeamAll;
 const addFollower = require('./src/tasks/followers').addFollower;
 const removeFollower = require('./src/tasks/followers').removeFollower;
+const removeFollowerAll = require('./src/tasks/followers').removeFollowerAll;
 const addAssignee = require('./src/tasks/assignees').addAssignee;
 const removeAssignee = require('./src/tasks/assignees').removeAssignee;
+const removeAssigneeAll = require('./src/tasks/assignees').removeAssigneeAll;
 
-const setArchived = require('./src/tasks/setArchived').setArchived;
+const setArchived = require('./src/tasks/archivedTasks').setArchived;
+const setUnArchived = require('./src/tasks/archivedTasks').setUnArchived;
 
 const removeWorkspaceIndex = require('./src/tasks/removeWorkspaceIndex').removeWorkspaceIndex;
 const reindexWorkspaceTasks = require('./src/tasks/reindexWorkspace').reindexWorkspaceTasks;
@@ -39,8 +44,7 @@ const addWorkspace = require('./src/users/workspace').addWorkspace;
 const removeWorkspace = require('./src/users/workspace').removeWorkspace;
 
 const newTask = {
-  path: '1_1.2_1.2.3',
-  title: 'Versão em português',
+  title: 'testando',
   dueDate: Date.now(),
   startDate: Date.now()
 };
@@ -51,10 +55,12 @@ const newUser = {
 };
 
 const queryParamsTasks = {
-  workspaceId: '-KNPHQqnCBrigglz2esN',
-  scopeId: '-KNPHQqnCBrigglz2esN',
-  path: '-KNPHQqnCBrigglz2esN',
-  title: 'first',
+  workspaceId: '-KOpzaoE0ZtYemjc4rH3',
+  scopeId: '-KOpzaoE0ZtYemjc4rH3',
+  path: '-KOpzaoE0ZtYemjc4rH3',
+  title: 'testando',
+  tags: ['-Tag1'],
+  teams: ['-Team1', '-Team2']
 };
 
 const queryParamsUsers = {
@@ -74,7 +80,7 @@ const pathUserWorkspaces = 'userWorkspaces';
 
 // elSyncTasks(pathTask1);
 // elSyncTasks(pathTask2);
-// fbAddTask('-KNPHQqnCBrigglz2esN', newTask, '-KNPHQqnCBrigglz2esN');
+// fbAddTask('-KOpzaoE0ZtYemjc4rH3', newTask, '-KOpzaoE0ZtYemjc4rH3');
 // fbUpdateTask(1, '-KJH5GUa9XP5Iya48HVU', newTask);
 // fbRemoveTask(1, '-KJH5GUa9XP5Iya48HVU');
 searchTasks(queryParamsTasks);
@@ -82,19 +88,24 @@ searchTasks(queryParamsTasks);
 // elSyncTaskTags(pathTaskTags);
 // fbAddTaskTags('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', ['-Tag1', '-Tag2']);
 
-// addTag('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Tag1');
-// removeTag('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Tag1');
-// addTeam('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Team1');
-// removeTeam('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Team1');
-// addFollower('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Follower1');
-// removeFollower('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Follower1');
-// addAssignee('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Assignee1');
-// removeAssignee('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-Assignee1');
+// addTag('-KOpzaoE0ZtYemjc4rH3', '-KOq0SAoLiKUiLLIA4lJ', '-Tag1');
+// removeTag('-KOpzaoE0ZtYemjc4rH3', '-KNPI2ZwxcYWSjdJSMtC', '-Tag1');
+// removeTagAll('-KOpzaoE0ZtYemjc4rH3', '-Tag1');
+// addTeam('-KOpzaoE0ZtYemjc4rH3', '-KOq0T0soUk7iI3ob1lw', '-Team1');
+// removeTeam('-KOpzaoE0ZtYemjc4rH3', '-KNPI2ZwxcYWSjdJSMtC', '-Team1');
+// removeTeamAll('-KOpzaoE0ZtYemjc4rH3', '-Team1');
+// addFollower('-KOpzaoE0ZtYemjc4rH3', '-KNPI2ZwxcYWSjdJSMtC', '-Follower1');
+// removeFollower('-KOpzaoE0ZtYemjc4rH3', '-KNPI2ZwxcYWSjdJSMtC', '-Follower1');
+// removeFollowerAll('-KOpzaoE0ZtYemjc4rH3', '-Follower1');
+// addAssignee('-KOpzaoE0ZtYemjc4rH3', '-KNPI2ZwxcYWSjdJSMtC', '-Assignee1');
+// removeAssignee('-KOpzaoE0ZtYemjc4rH3', '-KNPI2ZwxcYWSjdJSMtC', '-Assignee1');
+// removeAssigneeAll('-KOpzaoE0ZtYemjc4rH3', '-Assignee1');
 
 // removeWorkspaceIndex('1');
-// reindexWorkspaceTasks('-KNPHQqnCBrigglz2esN');
+// reindexWorkspaceTasks('-KOpzaoE0ZtYemjc4rH3');
 
-// setArchived('-KNPHQqnCBrigglz2esN', '-KNPI2ZwxcYWSjdJSMtC', '-KNPHQqnCBrigglz2esN|-KNPI2ZwxcYWSjdJSMtC', true);
+// setArchived('-KOpzaoE0ZtYemjc4rH3');
+// setUnArchived('-KOpzaoE0ZtYemjc4rH3');
 
 // fbMoveTasks('-KNPHQqnCBrigglz2esN/-KNPI2ZwxcYWSjdJSMtC', '-KOBd1CjiLOH-gIa8laf', '-KOBd1CjiLOH-gIa8laf/-KOBdBShgKyMPaMHxJP2');
 // moveTask('-KOBd1CjiLOH-gIa8laf', '-KOBdBShgKyMPaMHxJP2', '-KNPHQqnCBrigglz2esN|-KNPI2ZwxcYWSjdJSMtC', '-KOBd1CjiLOH-gIa8laf|-KOBdBShgKyMPaMHxJP2');
